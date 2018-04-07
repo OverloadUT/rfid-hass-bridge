@@ -18,8 +18,8 @@ class Reader:
                 deviceName = f.read()
             devices = [InputDevice(fn) for fn in list_devices()]
             for device in devices:
-                print(device.name, deviceName)
-                if device.name == deviceName:
+                print(device.name.strip(), deviceName.strip())
+                if device.name.strip() == deviceName.strip():
                     self.dev = device
                     break
             try:
