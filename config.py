@@ -6,7 +6,7 @@ path = os.path.dirname(os.path.realpath(__file__))
 i = 0
 print("Choose the reader from list")
 for dev in devices:
-	print(i, '"' + dev.name + '"')
+	print(i, '"' + dev.name + '" "' + dev.fn + '"')
 	i += 1
 
 dev_id = int(input('Device Number: '))
