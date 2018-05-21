@@ -1,5 +1,3 @@
-import string
-import csv
 import os.path
 import sys
 
@@ -8,24 +6,20 @@ from select import select
 
 
 class Reader:
-    def __init__(self):
-        path = os.path.dirname(os.path.realpath(__file__))
+    def __init__(self, device_name):
         self.keys = "X^1234567890XXXXqwertzuiopXXXXasdfghjklXXXXXyxcvbnmXXXXXXXXXXXXXXXXXXXXXXX"
-        if not os.path.isfile(path + '/deviceName.txt'):
-            sys.exit('Please run config.py first')
-        else:
-            with open(path + '/deviceName.txt', 'r') as f:
-                deviceName = f.read()
-            devices = [InputDevice(fn) for fn in list_devices()]
-            for device in devices:
-                print(device.name.strip(), deviceName.strip())
-                if device.name.strip() == deviceName.strip():
-                    self.dev = device
-                    break
-            try:
-                self.dev
-            except:
-                sys.exit('Could not find the device %s\n. Make sure is connected' % deviceName)
+
+        devices = [InputDevice(fn) for fn in list_devices()]
+        for device in devices:
+            print(device.name.strip(), device_name.strip())
+            if device.name.strip() == device_name.strip():
+                self.dev = device
+                print(device)
+                break
+        try:
+            self.dev
+        except:
+            sys.exit('Could not find the device %s\n. Make sure is connected' % device_name)
 
     def readCard(self):
         stri = ''
