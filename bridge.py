@@ -1,11 +1,10 @@
 from Reader import Reader
 import time
-import os
 import socket
 from requests import post
 import os
 
-reader = Reader(os.getenv('SCANNERNAME', 'blah'))
+reader = Reader()
 
 url = os.environ['HASSURL'] + '/api/events/rfid_scan'
 headers = {'x-ha-access': os.environ['HASSKEY'],

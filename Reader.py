@@ -5,7 +5,7 @@ from select import select
 
 
 class Reader:
-    def __init__(self, device_name):
+    def __init__(self):
         self.keys = "X^1234567890XXXXqwertzuiopXXXXasdfghjklXXXXXyxcvbnmXXXXXXXXXXXXXXXXXXXXXXX"
 
         devices = [InputDevice(fn) for fn in list_devices()]
