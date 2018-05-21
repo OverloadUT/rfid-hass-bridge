@@ -1,7 +1,6 @@
-import os.path
 import sys
 
-from evdev import InputDevice, categorize, ecodes, list_devices
+from evdev import InputDevice, ecodes, list_devices
 from select import select
 
 
@@ -10,16 +9,10 @@ class Reader:
         self.keys = "X^1234567890XXXXqwertzuiopXXXXasdfghjklXXXXXyxcvbnmXXXXXXXXXXXXXXXXXXXXXXX"
 
         devices = [InputDevice(fn) for fn in list_devices()]
-        for device in devices:
-            print(device.name.strip(), device_name.strip())
-            if device.name.strip() == device_name.strip():
-                self.dev = device
-                print(device)
-                break
-        try:
-            self.dev
-        except:
-            sys.exit('Could not find the device %s\n. Make sure is connected' % device_name)
+        if len(devices) == 0:
+            sys.exit('No input devices detected.' % device_name)
+
+        self.dev = devices[0]
 
     def readCard(self):
         stri = ''
