@@ -7,5 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY bridge.py ./
 COPY Reader.py ./
+COPY list_devices.py ./
 
 CMD [ "python", "-u", "./bridge.py" ]
