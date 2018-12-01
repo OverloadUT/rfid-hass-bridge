@@ -3,7 +3,7 @@
 
 # Reader.py: 4
 # config.py: 2
-evdev == 0.8.1
+evdev == 1.1.2
 
 # bridge.py: 5
-requests == 2.9.1
+requests == 2.20.1

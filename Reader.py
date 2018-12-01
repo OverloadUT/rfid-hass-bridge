@@ -36,10 +36,10 @@ class Reader:
     def readCard(self):
         stri = ''
         key = ''
-        while key != 'KEY_ENTER':
-            for event in self.dev.read():
-                if event.type == 1 and event.value == 1:
-                    stri += self.keys[event.code]
-                    key = ecodes.KEY[event.code]
-        return stri[:-1]
+        for event in self.dev.read_loop():
+            if event.type == 1 and event.value == 1:
+                if ecodes.KEY[event.code] == 'KEY_ENTER':
+                    return stri
+                stri += self.keys[event.code]
+
 
