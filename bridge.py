@@ -7,7 +7,7 @@ import os
 reader = Reader()
 
 url = os.environ['HASSURL'] + '/api/events/rfid_scan'
-headers = {'x-ha-access': os.environ['HASSKEY'],
+headers = {'Authorization': 'Bearer ' + os.environ['HASSKEY'],
            'content-type': 'application/json'}
 
 print('Reader is ready')
